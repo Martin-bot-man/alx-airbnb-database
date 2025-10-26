@@ -1,4 +1,5 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE if NOT EXISTS users ( 
     user_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -46,4 +47,4 @@ CREATE TABLE if NOT EXISTS messages(
     recepient_id UUID REFERENCES users(user_id) ON DELETE CASCADE,
     message_body TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
