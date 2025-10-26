@@ -38,7 +38,7 @@ CREATE TABLE if NOT EXISTS reviews(
     user_id UUID REFERENCES users(user_id) ON DELETE CASCADE,
     rating INT CHECK (rating >=1 AND rating <=5) NOT NULL,
     comment TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
 );
 CREATE TABLE if NOT EXISTS messages(
@@ -46,5 +46,5 @@ CREATE TABLE if NOT EXISTS messages(
     sender_id UUID REFERENCES users(user_id) ON DELETE CASCADE,
     recepient_id UUID REFERENCES users(user_id) ON DELETE CASCADE,
     message_body TEXT NOT NULL,
-    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 );
