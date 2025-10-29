@@ -24,3 +24,19 @@ SELECT
     r.created_at AS review_created_at
 FROM properties p
 OUTER JOIN reviews r ON p.property_id = r.property_id
+
+SELECT 
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    u.email,
+    u.phone_number,
+    b.booking_id,
+    b.start_date,
+    b.end_date,
+    b.total_price,
+    b.status
+FROM users u 
+FULL JOIN  bookings b ON u.user_id = b.guest_id
+
+
