@@ -50,6 +50,21 @@ WHERE (
     SELECT AVG(r.rating)
     FROM reviews r
     WHERE r.property_id = p.property_id) > 4
+
+SELECT 
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    u.email,
+    u.phone_number,
+
+FROM users u
+ WHERE(
+    SELECT COUNT(*)
+    FROM bookings b
+    WHERE b.guest_id = u.user_id
+ ) > 3
+
     
 
 
