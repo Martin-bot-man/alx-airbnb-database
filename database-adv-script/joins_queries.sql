@@ -39,4 +39,17 @@ SELECT
 FROM users u 
 FULL JOIN  bookings b ON u.user_id = b.guest_id
 
+SELECT 
+    p.property_id,
+    p.name, 
+    p.location,
+    p.price_per_night,
+    p.description,
+FROM properties p 
+WHERE (
+    SELECT AVG(r.rating)
+    FROM reviews r
+    WHERE r.property_id = p.property_id) > 4
+    
+
 
