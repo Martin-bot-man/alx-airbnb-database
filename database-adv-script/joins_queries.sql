@@ -65,6 +65,26 @@ FROM users u
     WHERE b.guest_id = u.user_id
  ) > 3
 
+ SELECT
+   u.user_id,
+   u.email,
+   u.first_name,
+   u.last_name,
+   u.role,
+   b.booking_id,
+   b.property,
+   b.start_date,
+   b.end_date,b.total_price,
+   b.status AS booking_status,
+   b.created_at AS booking_created_at
+ FROM 
+   users u
+ FULL OUTER JOIN bookings b ON U.user_id = b.guest_id 
+
+ ORDER BY 
+    u.user_id, b.booking_id
+
+
     
 
 
