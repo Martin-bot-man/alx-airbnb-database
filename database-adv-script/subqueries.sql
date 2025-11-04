@@ -20,3 +20,23 @@ WHERE
  ) 
  ORDER BY
     p.name;
+
+SELECT
+ u.user_id,
+ u.email,
+ u.first_name,
+ u.last_name,
+ u.role,
+ u.phone_number,
+ u.created_at
+FROM
+ users u
+WHERE
+ (
+    SELECT COUNT(*)
+    FROM bookings b
+    WHERE b.guest_id = u.user_id
+ ) > 3
+
+ORDER BY
+ u.first_name;
