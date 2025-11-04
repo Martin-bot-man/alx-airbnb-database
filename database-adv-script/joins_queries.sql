@@ -84,6 +84,25 @@ FROM users u
  ORDER BY 
     u.user_id, b.booking_id
 
+SELECT
+   p.property_id,
+   p.name AS property_name,
+   p.location,
+   p.price_per_night,
+   COUNT(r.review_id) AS total_reviews,
+   AVG(r.rating) AS average_rating,
+   MIN(r.rating) AS lowest_rating,
+   MAX(r.rating) AS highest_rating
+FROM
+   properties P
+LEFT JOIN 
+ reviews r ON p.property_id = r.property_id
+GROUP BY
+ p.property_id, p.name, p.location, p.price_per_night
+ORDER BY 
+ average_rating DESC NULLS LAST, total_reviews DESC;     
+
+
 
     
 
